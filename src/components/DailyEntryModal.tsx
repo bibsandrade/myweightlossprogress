@@ -546,48 +546,51 @@ export const DailyEntryModal: React.FC<Props> = ({
                         placeholder="Nome (Ex: Almoço)"
                         value={meal.name}
                         onChange={(e) => updateMeal(meal.id, { name: e.target.value })}
-                        className="rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-1.5 text-xs text-[#39313A] dark:text-[#F7EFF5]"
+                        className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
                       />
                       <input
                         type="time"
                         value={meal.time || ''}
                         onChange={(e) => updateMeal(meal.id, { time: e.target.value })}
-                        className="rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2 py-1.5 text-xs text-[#39313A] dark:text-[#F7EFF5]"
+                        className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
                       />
-                      <input
-                        type="number"
-                        min="0"
-                        placeholder="Calorias (kcal)"
-                        value={meal.caloriesKcal ?? ''}
-                        onChange={(e) =>
-                          updateMeal(meal.id, {
-                            caloriesKcal: e.target.value ? Number(e.target.value) : undefined,
-                          })
-                        }
-                        className="rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-1.5 text-xs text-[#39313A] dark:text-[#F7EFF5]"
-                      />
-                      <div className="flex items-center gap-2">
+                      <div className="grid grid-cols-2 gap-2 sm:contents">
                         <input
                           type="number"
-                          step="0.1"
                           min="0"
-                          placeholder="Proteína (g)"
-                          value={meal.proteinGrams ?? ''}
+                          placeholder="kcal"
+                          value={meal.caloriesKcal ?? ''}
                           onChange={(e) =>
                             updateMeal(meal.id, {
-                              proteinGrams: e.target.value ? Number(e.target.value) : undefined,
+                              caloriesKcal: e.target.value ? Number(e.target.value) : undefined,
                             })
                           }
-                          className="w-full rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-1.5 text-xs text-[#39313A] dark:text-[#F7EFF5]"
+                          className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
                         />
-                        <button
-                          type="button"
-                          onClick={() => removeMeal(meal.id)}
-                          className="p-1 text-gray-400 hover:text-rose-500"
-                          title="Remover refeição"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="number"
+                            step="0.1"
+                            min="0"
+                            placeholder="Proteína (g)"
+                            value={meal.proteinGrams ?? ''}
+                            onChange={(e) =>
+                              updateMeal(meal.id, {
+                                proteinGrams: e.target.value ? Number(e.target.value) : undefined,
+                              })
+                            }
+                            className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeMeal(meal.id)}
+                            className="p-2 rounded-lg text-gray-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition shrink-0"
+                            title="Remover refeição"
+                            aria-label="Remover refeição"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <input
@@ -595,7 +598,7 @@ export const DailyEntryModal: React.FC<Props> = ({
                       placeholder="Alimentos consumidos (opcional: Ex: Peito de frango grelhado, salada e arroz basmati)"
                       value={meal.foods || ''}
                       onChange={(e) => updateMeal(meal.id, { foods: e.target.value })}
-                      className="w-full rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-1 text-xs text-[#39313A] dark:text-[#F7EFF5]"
+                      className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
                     />
                   </div>
                 ))}
@@ -634,35 +637,37 @@ export const DailyEntryModal: React.FC<Props> = ({
                     key={ex.id}
                     className="p-3 rounded-xl bg-[#FFF8FB] dark:bg-[#140F15] border border-[#F2BFD3]/30 dark:border-[#362A36]"
                   >
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 mb-2">
                       <input
                         type="text"
                         placeholder="Atividade (Ex: Pilates)"
                         value={ex.type}
                         onChange={(e) => updateExercise(ex.id, { type: e.target.value })}
-                        className="rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-1.5 text-xs text-[#39313A] dark:text-[#F7EFF5]"
+                        className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
                       />
-                      <input
-                        type="number"
-                        min="1"
-                        placeholder="Duração (min)"
-                        value={ex.durationMinutes}
-                        onChange={(e) =>
-                          updateExercise(ex.id, { durationMinutes: Number(e.target.value) || 0 })
-                        }
-                        className="rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-1.5 text-xs text-[#39313A] dark:text-[#F7EFF5]"
-                      />
-                      <select
-                        value={ex.intensity || 'moderada'}
-                        onChange={(e) =>
-                          updateExercise(ex.id, { intensity: e.target.value as ExerciseIntensity })
-                        }
-                        className="rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2 py-1.5 text-xs text-[#39313A] dark:text-[#F7EFF5]"
-                      >
-                        <option value="baixa">Intensidade baixa</option>
-                        <option value="moderada">Intensidade moderada</option>
-                        <option value="alta">Intensidade alta</option>
-                      </select>
+                      <div className="grid grid-cols-2 gap-2 sm:contents">
+                        <input
+                          type="number"
+                          min="1"
+                          placeholder="Duração (min)"
+                          value={ex.durationMinutes}
+                          onChange={(e) =>
+                            updateExercise(ex.id, { durationMinutes: Number(e.target.value) || 0 })
+                          }
+                          className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
+                        />
+                        <select
+                          value={ex.intensity || 'moderada'}
+                          onChange={(e) =>
+                            updateExercise(ex.id, { intensity: e.target.value as ExerciseIntensity })
+                          }
+                          className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
+                        >
+                          <option value="baixa">Intensidade baixa</option>
+                          <option value="moderada">Intensidade moderada</option>
+                          <option value="alta">Intensidade alta</option>
+                        </select>
+                      </div>
                       <div className="flex items-center gap-2">
                         <input
                           type="number"
@@ -673,14 +678,16 @@ export const DailyEntryModal: React.FC<Props> = ({
                               steps: e.target.value ? Number(e.target.value) : undefined,
                             })
                           }
-                          className="w-full rounded-lg border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-2.5 py-1.5 text-xs text-[#39313A] dark:text-[#F7EFF5]"
+                          className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-1 focus:ring-[#E99AB9]"
                         />
                         <button
                           type="button"
                           onClick={() => removeExercise(ex.id)}
-                          className="p-1 text-gray-400 hover:text-rose-500"
+                          className="p-2 rounded-lg text-gray-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition shrink-0"
+                          title="Remover exercício"
+                          aria-label="Remover exercício"
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
@@ -1067,22 +1074,22 @@ export const DailyEntryModal: React.FC<Props> = ({
           </div>
 
           {/* ACTION BUTTONS */}
-          <div className="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-[#F2BFD3]/30 dark:border-[#362A36]">
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-[#F2BFD3]/30 dark:border-[#362A36]">
             {existingId ? (
               confirmDelete ? (
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs text-rose-600 font-medium">Eliminar diário deste dia?</span>
                   <button
                     type="button"
                     onClick={handleDelete}
-                    className="rounded-xl bg-rose-600 text-white px-3 py-1.5 text-xs font-semibold hover:bg-rose-700 transition"
+                    className="rounded-xl bg-rose-600 text-white px-3 py-2 text-xs font-semibold hover:bg-rose-700 transition"
                   >
                     Sim, eliminar
                   </button>
                   <button
                     type="button"
                     onClick={() => setConfirmDelete(false)}
-                    className="text-xs text-gray-500 hover:underline"
+                    className="text-xs text-gray-500 hover:underline px-2 py-1"
                   >
                     Cancelar
                   </button>
@@ -1091,7 +1098,7 @@ export const DailyEntryModal: React.FC<Props> = ({
                 <button
                   type="button"
                   onClick={() => setConfirmDelete(true)}
-                  className="flex items-center gap-1.5 text-xs text-rose-500 hover:text-rose-700 transition py-2"
+                  className="flex items-center gap-1.5 text-xs text-rose-500 hover:text-rose-700 transition py-2 self-start"
                 >
                   <Trash2 className="w-4 h-4" />
                   <span>Eliminar diário</span>
@@ -1101,17 +1108,17 @@ export const DailyEntryModal: React.FC<Props> = ({
               <div />
             )}
 
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto sm:ml-auto">
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-xl border border-[#F2BFD3] dark:border-[#362A36] px-4 py-2 text-xs font-medium text-[#39313A] dark:text-[#F7EFF5] hover:bg-[#F8DCE8]/30 transition"
+                className="w-full sm:w-auto rounded-xl border border-[#F2BFD3] dark:border-[#362A36] px-4 py-2.5 sm:py-2 text-xs font-semibold text-[#39313A] dark:text-[#F7EFF5] hover:bg-[#F8DCE8]/30 transition text-center"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="flex items-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2 text-xs font-semibold shadow-sm transition"
+                className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2.5 sm:py-2 text-xs font-bold shadow-xs transition"
               >
                 <Check className="w-4 h-4" />
                 <span>Guardar Diário</span>

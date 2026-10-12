@@ -263,7 +263,7 @@ export const CompareAssessmentsModal: React.FC<Props> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2 text-xs font-semibold shadow-xs transition"
+                className="w-full sm:w-auto rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2.5 sm:py-2 text-xs font-bold shadow-xs transition text-center"
               >
                 Fechar Comparação
               </button>

@@ -81,7 +81,7 @@ define(['./workbox-7e5eb42b'], (function (workbox) { 'use strict';
     "revision": "402b66900e731ca748771b6fc5e7a068"
   }, {
     "url": "index.html",
-    "revision": "413cb6ca60835c89b16f5365f401d306"
+    "revision": "e95d439dc5630c7347ca36aae7334367"
   }, {
     "url": "404.html",
     "revision": "46320609da8ef0c9a60d17bd5db987f2"
@@ -89,16 +89,16 @@ define(['./workbox-7e5eb42b'], (function (workbox) { 'use strict';
     "url": "assets/purify.es-Dn3VvdGh.js",
     "revision": null
   }, {
-    "url": "assets/index.es-DM-lONv5.js",
+    "url": "assets/index.es-CgbeWnQt.js",
     "revision": null
   }, {
-    "url": "assets/index-ZXyghL7k.js",
+    "url": "assets/index-Cnkvi0uV.js",
     "revision": null
   }, {
-    "url": "assets/index-3B2bdrUw.css",
+    "url": "assets/index-CcjHKQdD.css",
     "revision": null
   }, {
-    "url": "assets/html2canvas-DEYticgT.js",
+    "url": "assets/html2canvas-DwaIAGw4.js",
     "revision": null
   }, {
     "url": ".nojekyll",

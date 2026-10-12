@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Check, Activity, Calendar, AlertCircle } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { MounjaroSymptomsRating } from '../types';
-import { getTodayDateString, formatDateLongPt } from '../utils/formatters';
+import { getTodayDateString, formatDateLongPt, formatDatePt } from '../utils/formatters';
 
 interface Props {
   isOpen: boolean;
@@ -191,14 +191,23 @@ export const MounjaroSymptomsModal: React.FC<Props> = ({
 
         {/* Date & Cycle Banner */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-2xl bg-[#FFF8FB] dark:bg-[#140F15] border border-[#F2BFD3]/40 dark:border-[#362A36] mb-5 gap-2">
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#C86D93]" />
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="bg-transparent text-xs font-bold text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden"
-            />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 w-full sm:w-auto">
+            <div className="flex items-center justify-between sm:justify-start gap-2 bg-white dark:bg-[#1F1721] px-3 py-2 rounded-xl border border-[#F2BFD3]/50 dark:border-[#362A36]">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-[#C86D93] shrink-0" />
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="bg-transparent text-xs font-bold text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden"
+                />
+              </div>
+              {date && (
+                <span className="text-[11px] font-semibold text-[#C86D93] sm:hidden">
+                  {formatDatePt(date)}
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="text-xs font-medium text-[#817782] dark:text-[#A69AA8]">
@@ -316,17 +325,17 @@ export const MounjaroSymptomsModal: React.FC<Props> = ({
             />
           </div>
 
-          <div className="pt-2 flex justify-end gap-2 border-t border-[#F2BFD3]/30 dark:border-[#362A36]">
+          <div className="pt-2 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 border-t border-[#F2BFD3]/30 dark:border-[#362A36]">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl border border-[#F2BFD3] dark:border-[#362A36] px-4 py-2 text-xs font-medium text-[#39313A] dark:text-[#F7EFF5]"
+              className="w-full sm:w-auto rounded-xl border border-[#F2BFD3] dark:border-[#362A36] px-4 py-2.5 sm:py-2 text-xs font-semibold text-[#39313A] dark:text-[#F7EFF5] hover:bg-[#F8DCE8]/30 transition text-center"
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2 text-xs font-semibold shadow-xs transition"
+              className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2.5 sm:py-2 text-xs font-bold shadow-xs transition"
             >
               <Check className="w-4 h-4" />
               <span>Guardar Sintomas</span>

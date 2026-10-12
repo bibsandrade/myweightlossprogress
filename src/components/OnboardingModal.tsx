@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, ArrowRight, Check } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { ActivityLevel, PrimaryGoal, UserProfile, BodyAssessment } from '../types';
-import { getTodayDateString } from '../utils/formatters';
+import { getTodayDateString, formatDatePt } from '../utils/formatters';
 
 interface Props {
   isOpen: boolean;
@@ -200,7 +200,7 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose }) => {
           </form>
         ) : (
           <form onSubmit={handleFinish} className="mt-6 space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-[#39313A] dark:text-[#F7EFF5] mb-1">
                   Peso Inicial (kg)
@@ -213,7 +213,7 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose }) => {
                   value={initialWeightKg}
                   onChange={(e) => setInitialWeightKg(e.target.value)}
                   placeholder="Ex: 68.5"
-                  className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2.5 text-sm text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-2 focus:ring-[#E99AB9]"
+                  className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3.5 py-2.5 text-sm text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-2 focus:ring-[#E99AB9]"
                 />
                 <span className="text-[11px] text-[#817782] dark:text-[#A69AA8]">
                   Servirá de referência histórica.
@@ -232,7 +232,7 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose }) => {
                   value={goalWeightKg}
                   onChange={(e) => setGoalWeightKg(e.target.value)}
                   placeholder="Ex: 60.0"
-                  className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2.5 text-sm text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-2 focus:ring-[#E99AB9]"
+                  className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3.5 py-2.5 text-sm text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-2 focus:ring-[#E99AB9]"
                 />
                 <span className="text-[11px] text-[#817782] dark:text-[#A69AA8]">
                   Opcional, editável a qualquer altura.
@@ -240,10 +240,15 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-medium text-[#817782] dark:text-[#A69AA8] mb-1">
-                  Data de Início
+                <label className="block text-xs font-medium text-[#817782] dark:text-[#A69AA8] mb-1 flex items-center justify-between">
+                  <span>Data de Início</span>
+                  {startDate && (
+                    <span className="text-[10px] text-[#C86D93] font-semibold sm:hidden">
+                      {formatDatePt(startDate)}
+                    </span>
+                  )}
                 </label>
                 <input
                   type="date"

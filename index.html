@@ -47,20 +47,6 @@
   <body class="bg-[#FFF8FB] dark:bg-[#140F15] text-[#39313A] dark:text-[#F7EFF5] antialiased selection:bg-[#F2BFD3] selection:text-[#39313A]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      (function() {
-        try {
-          if (typeof window !== 'undefined' && window.location.hostname.endsWith('github.io') && !window.location.pathname.includes('/docs/')) {
-            var rawScript = document.querySelector('script[src*="main.tsx"]');
-            if (rawScript) {
-              var p = window.location.pathname;
-              var target = p.endsWith('/') ? p + 'docs/' : p + '/docs/';
-              window.location.replace(target);
-            }
-          }
-        } catch (e) {}
-      })();
-    </script>
   </body>
 </html>
 

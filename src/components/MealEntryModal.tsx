@@ -287,18 +287,18 @@ export const MealEntryModal: React.FC<Props> = ({
           </div>
 
           {/* Botões de Ação */}
-          <div className="pt-2 flex items-center justify-end gap-3 border-t border-[#F2BFD3]/30 dark:border-[#362A36]">
+          <div className="pt-2 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 border-t border-[#F2BFD3]/30 dark:border-[#362A36]">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-semibold text-[#817782] hover:text-[#39313A] dark:hover:text-[#F7EFF5] transition"
+              className="w-full sm:w-auto px-4 py-2.5 sm:py-2 text-xs font-semibold text-[#817782] hover:text-[#39313A] dark:hover:text-[#F7EFF5] border border-[#F2BFD3] dark:border-[#362A36] rounded-xl transition text-center"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white text-xs font-semibold shadow-xs transition disabled:opacity-60"
+              className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white text-xs font-bold shadow-xs transition disabled:opacity-60"
             >
               <Check className="w-4 h-4" />
               <span>{isSubmitting ? 'A guardar...' : 'Guardar Refeição'}</span>

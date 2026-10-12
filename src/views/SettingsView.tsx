@@ -394,7 +394,7 @@ export const SettingsView: React.FC = () => {
             />
           </div>
 
-          <div className="flex items-center justify-between pt-2">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
             {profileSaved ? (
               <span className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
                 <Check className="w-4 h-4" /> Perfil guardado com sucesso!
@@ -404,7 +404,7 @@ export const SettingsView: React.FC = () => {
             )}
             <button
               type="submit"
-              className="rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2 text-xs font-semibold shadow-xs transition"
+              className="w-full sm:w-auto rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2.5 sm:py-2 text-xs font-bold shadow-xs transition text-center"
             >
               Guardar Perfil
             </button>
@@ -438,8 +438,9 @@ export const SettingsView: React.FC = () => {
                 </div>
                 <button
                   onClick={() => deleteMilestone(m.id)}
-                  className="text-gray-400 hover:text-rose-500"
+                  className="p-1.5 text-gray-400 hover:text-rose-500 rounded-lg"
                   title="Eliminar meta"
+                  aria-label="Eliminar meta"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
@@ -448,34 +449,36 @@ export const SettingsView: React.FC = () => {
           </div>
         )}
 
-        <form onSubmit={handleAddMilestone} className="flex flex-wrap items-center gap-2">
+        <form onSubmit={handleAddMilestone} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           <input
             type="text"
             placeholder="Nome da meta (Ex: Primeira vitória 65kg)"
             value={milestoneName}
             onChange={(e) => setMilestoneName(e.target.value)}
-            className="flex-1 min-w-[200px] rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2 text-xs"
+            className="w-full sm:flex-1 rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3.5 py-2 text-xs"
           />
-          <input
-            type="number"
-            step="0.1"
-            placeholder="Valor"
-            value={milestoneTarget}
-            onChange={(e) => setMilestoneTarget(e.target.value)}
-            className="w-24 rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2 text-xs"
-          />
-          <select
-            value={milestoneUnit}
-            onChange={(e) => setMilestoneUnit(e.target.value)}
-            className="rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2 text-xs"
-          >
-            <option value="kg">kg</option>
-            <option value="cm">cm</option>
-            <option value="%">%</option>
-          </select>
+          <div className="grid grid-cols-2 gap-2 sm:contents">
+            <input
+              type="number"
+              step="0.1"
+              placeholder="Valor"
+              value={milestoneTarget}
+              onChange={(e) => setMilestoneTarget(e.target.value)}
+              className="w-full sm:w-24 rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2 text-xs"
+            />
+            <select
+              value={milestoneUnit}
+              onChange={(e) => setMilestoneUnit(e.target.value)}
+              className="w-full sm:w-auto rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2 text-xs"
+            >
+              <option value="kg">kg</option>
+              <option value="cm">cm</option>
+              <option value="%">%</option>
+            </select>
+          </div>
           <button
             type="submit"
-            className="flex items-center gap-1 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-4 py-2 text-xs font-semibold transition"
+            className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-4 py-2.5 sm:py-2 text-xs font-bold shadow-xs transition"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Adicionar Meta</span>

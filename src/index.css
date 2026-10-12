@@ -36,23 +36,37 @@
     min-height: 100vh;
   }
 
-  /* Mobile date and time inputs styling */
+  /* Mobile date, time, and general inputs styling - 16px prevents iOS zoom-in on focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  @media (min-width: 640px) {
+    input,
+    select,
+    textarea {
+      font-size: 0.875rem; /* 14px on sm and above */
+    }
+  }
+
   input[type="date"],
   input[type="time"],
   input[type="datetime-local"] {
     -webkit-appearance: none;
     appearance: none;
-    min-height: 42px;
-    font-size: 14px;
+    min-height: 44px;
   }
 
   /* Support for date picker indicator on WebKit / Blink */
   input[type="date"]::-webkit-calendar-picker-indicator,
   input[type="time"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 0.75;
     filter: invert(0.4);
-    padding: 2px;
+    padding: 4px;
+    margin-right: -2px;
   }
 
   html.dark input[type="date"]::-webkit-calendar-picker-indicator,

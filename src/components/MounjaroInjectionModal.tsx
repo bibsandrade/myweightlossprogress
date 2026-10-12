@@ -238,17 +238,17 @@ export const MounjaroInjectionModal: React.FC<Props> = ({
               <div />
             )}
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-xl border border-[#F2BFD3] dark:border-[#362A36] px-4 py-2 text-xs font-medium text-[#39313A] dark:text-[#F7EFF5]"
+                className="w-full sm:w-auto rounded-xl border border-[#F2BFD3] dark:border-[#362A36] px-4 py-2.5 sm:py-2 text-xs font-semibold text-[#39313A] dark:text-[#F7EFF5] hover:bg-[#F8DCE8]/30 transition text-center"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="flex items-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2 text-xs font-semibold shadow-xs transition"
+                className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-5 py-2.5 sm:py-2 text-xs font-bold shadow-xs transition"
               >
                 <Check className="w-4 h-4" />
                 <span>Guardar Injeção</span>
