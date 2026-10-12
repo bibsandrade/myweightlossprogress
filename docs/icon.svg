@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2BFD3" />
+      <stop offset="100%" stop-color="#C86D93" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E99AB9" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#F8DCE8" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="#FFF8FB" />
+  <circle cx="256" cy="256" r="210" fill="url(#glow)" />
+  <!-- Elegant stylised flower / progress spark emblem -->
+  <path d="M256 96 C296 170 370 216 416 256 C370 296 296 342 256 416 C216 342 142 296 96 256 C142 216 216 170 256 96 Z" fill="url(#grad)" />
+  <circle cx="256" cy="256" r="48" fill="#FFFFFF" />
+  <path d="M240 236 L252 268 L276 244" fill="none" stroke="#C86D93" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

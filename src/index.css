@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  :root, [data-theme="light"], html:not(.dark) {
+    --bg-main: #FFF8FB;
+    --card-bg: #FFFFFF;
+    --text-primary: #39313A;
+    --text-secondary: #817782;
+    --rose-light: #F8DCE8;
+    --rose-pastel: #F2BFD3;
+    --rose-main: #E99AB9;
+    --rose-dark: #C86D93;
+    --border-subtle: #F3E4ED;
+    color-scheme: light;
+  }
+
+  html.dark, :root.dark, body.dark, [data-theme="dark"] {
+    --bg-main: #140F15;
+    --card-bg: #1F1721;
+    --text-primary: #F7EFF5;
+    --text-secondary: #A69AA8;
+    --rose-light: #2D1E2B;
+    --rose-pastel: #62344B;
+    --rose-main: #E99AB9;
+    --rose-dark: #F2BFD3;
+    --border-subtle: #2C212E;
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+}
+
+/* Print optimizations for reports */
+@media print {
+  aside, nav, .no-print, button:not(.allow-print) {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print-page {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10mm !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+}
+
