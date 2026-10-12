@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Check, Utensils, Clock, Flame, Calendar } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { DailyEntry, Meal } from '../types';
-import { getTodayDateString } from '../utils/formatters';
+import { getTodayDateString, formatDatePt } from '../utils/formatters';
 
 interface Props {
   isOpen: boolean;
@@ -150,25 +150,30 @@ export const MealEntryModal: React.FC<Props> = ({
 
         <form onSubmit={handleSubmit} className="mt-4 space-y-4">
           {/* Data & Horário */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FFF8FB] dark:bg-[#140F15] border border-[#F2BFD3]/40 dark:border-[#362A36]">
             <div>
-              <label className="block text-[11px] font-medium text-[#817782] dark:text-[#A69AA8] mb-1">
-                Data do Registo
+              <label className="block text-xs font-bold text-[#39313A] dark:text-[#F7EFF5] mb-1.5 flex items-center justify-between">
+                <span>Data do Registo</span>
+                {date && (
+                  <span className="text-[11px] font-semibold text-[#C86D93] sm:hidden">
+                    {formatDatePt(date)}
+                  </span>
+                )}
               </label>
               <div className="relative">
                 <input
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-2 focus:ring-[#E99AB9]"
+                  className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2.5 text-xs font-semibold text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-2 focus:ring-[#E99AB9]"
                   required
                 />
-                <Calendar className="w-3.5 h-3.5 absolute right-3 top-3 text-[#817782] pointer-events-none" />
+                <Calendar className="w-3.5 h-3.5 absolute right-3 top-3.5 text-[#817782] pointer-events-none hidden sm:block" />
               </div>
             </div>
 
             <div>
-              <label className="block text-[11px] font-medium text-[#817782] dark:text-[#A69AA8] mb-1">
+              <label className="block text-xs font-semibold text-[#817782] dark:text-[#A69AA8] mb-1.5">
                 Horário da Refeição
               </label>
               <div className="relative">
@@ -176,9 +181,9 @@ export const MealEntryModal: React.FC<Props> = ({
                   type="time"
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
-                  className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-2 focus:ring-[#E99AB9]"
+                  className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-white dark:bg-[#1F1721] px-3 py-2.5 text-xs text-[#39313A] dark:text-[#F7EFF5] focus:outline-hidden focus:ring-2 focus:ring-[#E99AB9]"
                 />
-                <Clock className="w-3.5 h-3.5 absolute right-3 top-3 text-[#817782] pointer-events-none" />
+                <Clock className="w-3.5 h-3.5 absolute right-3 top-3.5 text-[#817782] pointer-events-none hidden sm:block" />
               </div>
             </div>
           </div>

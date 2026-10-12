@@ -267,7 +267,7 @@ export const DashboardView: React.FC<Props> = ({
       {/* SUMMARY CARDS GRID */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {/* Card 1: Peso Atual */}
-        <div className="rounded-2xl bg-white dark:bg-[#1F1721] p-4 sm:p-5 shadow-xs border border-[#F2BFD3]/40 dark:border-[#362A36]">
+        <div className="rounded-2xl bg-white dark:bg-[#1F1721] p-3.5 sm:p-5 shadow-xs border border-[#F2BFD3]/40 dark:border-[#362A36]">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] font-medium text-[#817782] dark:text-[#A69AA8]">
               Peso Atual
@@ -279,16 +279,16 @@ export const DashboardView: React.FC<Props> = ({
           <div className="text-xl sm:text-2xl font-bold text-[#39313A] dark:text-[#F7EFF5]">
             {formatWeight(weightProgress.currentWeight)}
           </div>
-          <div className="mt-2 flex items-center justify-between text-[10px] text-[#817782] dark:text-[#A69AA8]">
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-center justify-between text-[10px] text-[#817782] dark:text-[#A69AA8] gap-0.5">
             <span>Última pesagem:</span>
-            <span className="font-medium text-[#39313A] dark:text-[#F7EFF5]">
+            <span className="font-semibold text-[#39313A] dark:text-[#F7EFF5]">
               {formatDatePt(weightProgress.lastWeightDate)}
             </span>
           </div>
         </div>
 
         {/* Card 2: Peso Inicial */}
-        <div className="rounded-2xl bg-white dark:bg-[#1F1721] p-4 sm:p-5 shadow-xs border border-[#F2BFD3]/40 dark:border-[#362A36]">
+        <div className="rounded-2xl bg-white dark:bg-[#1F1721] p-3.5 sm:p-5 shadow-xs border border-[#F2BFD3]/40 dark:border-[#362A36]">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] font-medium text-[#817782] dark:text-[#A69AA8]">
               Peso Inicial
@@ -300,9 +300,9 @@ export const DashboardView: React.FC<Props> = ({
           <div className="text-xl sm:text-2xl font-bold text-[#39313A] dark:text-[#F7EFF5]">
             {formatWeight(weightProgress.initialWeight)}
           </div>
-          <div className="mt-2 flex items-center justify-between text-[10px] text-[#817782] dark:text-[#A69AA8]">
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-center justify-between text-[10px] text-[#817782] dark:text-[#A69AA8] gap-0.5">
             <span>Início da jornada:</span>
-            <span className="font-medium text-[#39313A] dark:text-[#F7EFF5]">
+            <span className="font-semibold text-[#39313A] dark:text-[#F7EFF5]">
               {formatDatePt(profile?.startDate)}
             </span>
           </div>

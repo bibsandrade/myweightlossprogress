@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import {
+  formatDatePt,
   formatDateLongPt,
   formatMl,
   formatWeight,
@@ -86,30 +87,34 @@ export const DailyJournalView: React.FC<Props> = ({
         </div>
 
         {/* Date Selector */}
-        <div className="flex items-center gap-2 self-start sm:self-auto bg-white dark:bg-[#1F1721] p-1.5 rounded-2xl border border-[#F2BFD3]/40 dark:border-[#362A36] shadow-xs">
+        <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto bg-white dark:bg-[#1F1721] p-1.5 rounded-2xl border border-[#F2BFD3]/40 dark:border-[#362A36] shadow-xs">
           <button
             onClick={() => changeDateBy(-1)}
-            className="p-1.5 rounded-xl hover:bg-[#F8DCE8]/30 dark:hover:bg-[#2D1E2B] text-[#817782]"
+            className="p-2 sm:p-1.5 rounded-xl hover:bg-[#F8DCE8]/30 dark:hover:bg-[#2D1E2B] text-[#817782] shrink-0"
             title="Dia anterior"
+            aria-label="Dia anterior"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="bg-transparent text-xs font-semibold text-[#39313A] dark:text-[#F7EFF5] px-2 py-1 focus:outline-hidden"
-          />
+          <div className="relative flex-1 sm:flex-initial text-center px-1">
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              className="w-full sm:w-auto bg-transparent text-xs font-bold text-[#39313A] dark:text-[#F7EFF5] px-1 py-1 focus:outline-hidden text-center cursor-pointer"
+            />
+          </div>
           <button
             onClick={() => setSelectedDate(getTodayDateString())}
-            className="text-[11px] font-medium text-[#C86D93] hover:underline px-1"
+            className="text-[11px] font-bold text-[#C86D93] hover:underline px-2 py-1 rounded-lg bg-[#F8DCE8]/40 dark:bg-[#2D1E2B] shrink-0"
           >
             Hoje
           </button>
           <button
             onClick={() => changeDateBy(1)}
-            className="p-1.5 rounded-xl hover:bg-[#F8DCE8]/30 dark:hover:bg-[#2D1E2B] text-[#817782]"
+            className="p-2 sm:p-1.5 rounded-xl hover:bg-[#F8DCE8]/30 dark:hover:bg-[#2D1E2B] text-[#817782] shrink-0"
             title="Dia seguinte"
+            aria-label="Dia seguinte"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -117,24 +122,27 @@ export const DailyJournalView: React.FC<Props> = ({
       </div>
 
       {/* Date Banner */}
-      <div className="flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-[#F8DCE8]/60 to-[#FFF8FB] dark:from-[#2D1E2B]/50 dark:to-[#1F1721] border border-[#F2BFD3]/40 dark:border-[#362A36]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-[#F8DCE8]/60 to-[#FFF8FB] dark:from-[#2D1E2B]/50 dark:to-[#1F1721] border border-[#F2BFD3]/40 dark:border-[#362A36] gap-3">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-white dark:bg-[#1F1721] text-[#C86D93] shadow-xs">
+          <div className="p-2.5 rounded-xl bg-white dark:bg-[#1F1721] text-[#C86D93] shadow-xs shrink-0">
             <Calendar className="w-5 h-5" />
           </div>
-          <div>
-            <span className="text-xs font-medium text-[#817782] dark:text-[#A69AA8] block">
+          <div className="min-w-0">
+            <span className="text-[11px] font-medium text-[#817782] dark:text-[#A69AA8] block">
               Registo de
             </span>
-            <span className="text-sm sm:text-base font-bold text-[#39313A] dark:text-[#F7EFF5]">
+            <span className="text-sm sm:text-base font-bold text-[#39313A] dark:text-[#F7EFF5] block break-words">
               {formatDateLongPt(selectedDate)}
+            </span>
+            <span className="text-[11px] font-medium text-[#C86D93] sm:hidden">
+              ({formatDatePt(selectedDate)})
             </span>
           </div>
         </div>
 
         <button
           onClick={() => onOpenDailyModalWithDate(selectedDate)}
-          className="flex items-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-4 py-2 text-xs font-semibold shadow-xs transition"
+          className="flex items-center justify-center gap-1.5 rounded-xl bg-[#E99AB9] hover:bg-[#C86D93] text-white px-4 py-2.5 sm:py-2 text-xs font-semibold shadow-xs transition w-full sm:w-auto"
         >
           {currentEntry ? <Edit2 className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
           <span>{currentEntry ? 'Editar Diário' : 'Criar Registo'}</span>

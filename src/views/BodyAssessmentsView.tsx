@@ -186,36 +186,36 @@ export const BodyAssessmentsView: React.FC<Props> = ({
                 className="rounded-2xl bg-white dark:bg-[#1F1721] p-4 sm:p-5 shadow-xs border border-[#F2BFD3]/40 dark:border-[#362A36] transition"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-[#F8DCE8] dark:bg-[#2D1E2B] text-[#C86D93]">
+                  <div className="flex items-start sm:items-center gap-3">
+                    <div className="p-2.5 rounded-xl bg-[#F8DCE8] dark:bg-[#2D1E2B] text-[#C86D93] shrink-0 mt-0.5 sm:mt-0">
                       <Scale className="w-4 h-4" />
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-[#39313A] dark:text-[#F7EFF5]">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                        <span className="text-sm font-bold text-[#39313A] dark:text-[#F7EFF5] whitespace-nowrap">
                           {formatDatePt(item.date)}
                         </span>
                         {item.time && (
-                          <span className="text-xs text-[#817782]">({item.time})</span>
+                          <span className="text-xs text-[#817782] font-medium whitespace-nowrap">({item.time})</span>
                         )}
-                        <span className="text-[10px] text-[#817782] bg-[#FFF8FB] dark:bg-[#140F15] px-2 py-0.5 rounded-md border border-[#F2BFD3]/30">
+                        <span className="text-[10px] text-[#817782] dark:text-[#A69AA8] bg-[#FFF8FB] dark:bg-[#140F15] px-2 py-0.5 rounded-md border border-[#F2BFD3]/30 whitespace-nowrap">
                           {getSourceLabel(item.source)}
                         </span>
                       </div>
-                      <div className="flex flex-wrap items-center gap-3 mt-1 text-xs">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1.5 text-xs">
                         {item.weightKg !== undefined && (
-                          <span className="font-semibold text-[#39313A] dark:text-[#F7EFF5]">
+                          <span className="font-bold text-[#39313A] dark:text-[#F7EFF5] bg-rose-50/70 dark:bg-rose-950/30 px-2 py-0.5 rounded-md">
                             Peso: {formatWeight(item.weightKg)}
                           </span>
                         )}
                         {item.bmi !== undefined && (
-                          <span className="text-[#817782]">IMC: {item.bmi}</span>
+                          <span className="text-[#817782] dark:text-[#A69AA8]">IMC: {item.bmi}</span>
                         )}
                         {item.waistCm !== undefined && (
-                          <span className="text-[#817782]">Cintura: {item.waistCm} cm</span>
+                          <span className="text-[#817782] dark:text-[#A69AA8]">Cintura: {item.waistCm} cm</span>
                         )}
                         {item.bodyFatPercent !== undefined && (
-                          <span className="text-[#817782]">Gordura: {item.bodyFatPercent}%</span>
+                          <span className="text-[#817782] dark:text-[#A69AA8]">Gordura: {item.bodyFatPercent}%</span>
                         )}
                       </div>
                     </div>

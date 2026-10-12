@@ -35,6 +35,32 @@
     color: var(--text-primary);
     min-height: 100vh;
   }
+
+  /* Mobile date and time inputs styling */
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"] {
+    -webkit-appearance: none;
+    appearance: none;
+    min-height: 42px;
+    font-size: 14px;
+  }
+
+  /* Support for date picker indicator on WebKit / Blink */
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.7;
+    filter: invert(0.4);
+    padding: 2px;
+  }
+
+  html.dark input[type="date"]::-webkit-calendar-picker-indicator,
+  html.dark input[type="time"]::-webkit-calendar-picker-indicator,
+  [data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator,
+  [data-theme="dark"] input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.85);
+  }
 }
 
 /* Print optimizations for reports */

@@ -24,7 +24,7 @@ import {
   GoalMilestone,
   BackupData,
 } from '../types';
-import { getTodayDateString } from '../utils/formatters';
+import { getTodayDateString, formatDatePt } from '../utils/formatters';
 
 export const SettingsView: React.FC = () => {
   const {
@@ -46,6 +46,7 @@ export const SettingsView: React.FC = () => {
   const [goalWeightKg, setGoalWeightKg] = useState(
     profile?.goalWeightKg ? String(profile.goalWeightKg) : ''
   );
+  const [startDate, setStartDate] = useState(profile?.startDate || getTodayDateString());
   const [activityLevel, setActivityLevel] = useState<ActivityLevel>(
     profile?.activityLevel || 'moderately_active'
   );
@@ -83,7 +84,7 @@ export const SettingsView: React.FC = () => {
       heightCm: heightCm ? parseFloat(heightCm) : undefined,
       initialWeightKg: profile?.initialWeightKg,
       goalWeightKg: goalWeightKg ? parseFloat(goalWeightKg) : undefined,
-      startDate: profile?.startDate || getTodayDateString(),
+      startDate: startDate || profile?.startDate || getTodayDateString(),
       activityLevel,
       primaryGoal,
       notes: notes.trim() || undefined,
@@ -269,7 +270,7 @@ export const SettingsView: React.FC = () => {
         </div>
 
         <form onSubmit={handleSaveProfile} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-xs font-semibold text-[#39313A] dark:text-[#F7EFF5] mb-1">
                 Nome de apresentação
@@ -292,6 +293,23 @@ export const SettingsView: React.FC = () => {
                 max="120"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
+                className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3.5 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#39313A] dark:text-[#F7EFF5] mb-1 flex items-center justify-between">
+                <span>Data de Início da Jornada</span>
+                {startDate && (
+                  <span className="text-[10px] text-[#C86D93] font-semibold sm:hidden">
+                    {formatDatePt(startDate)}
+                  </span>
+                )}
+              </label>
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
                 className="w-full rounded-xl border border-[#F2BFD3] dark:border-[#362A36] bg-[#FFF8FB] dark:bg-[#140F15] px-3.5 py-2 text-xs text-[#39313A] dark:text-[#F7EFF5]"
               />
             </div>

@@ -282,13 +282,18 @@ export const HistoryCalendarView: React.FC<Props> = ({
 
           {/* DAY DETAILS COLUMN */}
           <div className="rounded-3xl bg-white dark:bg-[#1F1721] p-5 sm:p-6 shadow-xs border border-[#F2BFD3]/40 dark:border-[#362A36]">
-            <div className="mb-4">
-              <span className="text-[11px] font-medium text-[#817782] block">
+            <div className="mb-4 pb-3 border-b border-[#F2BFD3]/30 dark:border-[#362A36]">
+              <span className="text-[11px] font-medium text-[#817782] dark:text-[#A69AA8] block">
                 Detalhes do dia selecionado:
               </span>
-              <h3 className="text-base font-bold text-[#39313A] dark:text-[#F7EFF5]">
-                {formatDateLongPt(selectedCalendarDate)}
-              </h3>
+              <div className="flex flex-wrap items-baseline gap-2 mt-0.5">
+                <h3 className="text-base font-bold text-[#39313A] dark:text-[#F7EFF5]">
+                  {formatDateLongPt(selectedCalendarDate)}
+                </h3>
+                <span className="text-xs font-semibold text-[#C86D93] bg-[#F8DCE8]/50 dark:bg-[#2D1E2B] px-2 py-0.5 rounded-md">
+                  {formatDatePt(selectedCalendarDate)}
+                </span>
+              </div>
             </div>
 
             {/* Assessment Records for this day */}
